@@ -61,5 +61,5 @@ jobs:
       uses: peter-evans/repository-dispatch@v1
       with:
         repository: dev-daeun/dev-daeun.automate-doc.github.io
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.ACTION_ACCESS_TOKEN }}
         event-type: file-uploaded
