@@ -58,9 +58,8 @@ jobs:
         path: doc.md
 
     - name: Dispatch event to document repository
-      run: |
-        curl \
-        -X POST \
-        -H "Accept: application/vnd.github.v3+json" \
-        https://api.github.com/repos/dev-daeun/dev-daeun.automate-doc.github.io/dispatches \
-        -d '{"event_type":"file-uploaded"}'
+      uses: peter-evans/repository-dispatch@v1
+      with:
+        repository: dev-daeun/dev-daeun.automate-doc.github.io
+        token: ${{ secrets.GITHUB_TOKEN }}
+        event-type: file-uploaded
