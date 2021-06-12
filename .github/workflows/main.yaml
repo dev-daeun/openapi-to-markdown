@@ -10,9 +10,19 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Checkout Nodejs
     - uses: actions/setup-node@v2
       with:
         node-version: '14'
+
+    - name: Install widdershins
+      run: npm install -g widdershins
+
+    - name: Checkout Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+        architecture: 'x64'
 
     - name: Install poetry
       run: |
@@ -33,9 +43,6 @@ jobs:
       run: |
         poetry install --no-root
       if: steps.cache.outputs.cache-hit != 'true'
-
-    - name: Install widdershins
-      run: npm install -g widdershins
 
     - name: Make markdown file
       env:
