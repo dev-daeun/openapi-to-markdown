@@ -2,7 +2,7 @@ name: Openapi to Markdown
 on:
   push:
     branches:
-      - main
+      - '*'
 
 jobs:
   build:
@@ -10,8 +10,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Install widdershins
-      uses: actions/setup-node@v2
+    - uses: actions/setup-node@v2
       with:
         node-version: '14'
+
+    - name: Install widdershins
       run: npm install -g widdershins
