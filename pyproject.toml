@@ -1,0 +1,51 @@
+[tool.poetry]
+name = "openapi-to-markdown"
+version = "0.1.0"
+description = "openapi to markdown & upload artifact"
+authors = ["DaEun Kim <dev-daeun.gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.65.1"
+uvicorn = {version = "^0.14.0", extras = ["standard"]}
+gunicorn = "^20.1.0"
+orjson = "^3.5.3"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.4"
+black = "^21.5b2"
+pre-commit = "^2.13.0"
+flake8 = "^3.9.2"
+isort = "^5.8.0"
+mypy = "^0.812"
+
+[tool.black]
+line-length = 120
+target-version = ['py39']
+include = '\.pyi?$'
+exclude = '''
+
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+    | node_modules
+    | docs
+  )
+)
+'''
+
+[tool.isort]
+profile = "black"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
