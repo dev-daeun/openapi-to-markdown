@@ -44,6 +44,7 @@ jobs:
         poetry install --no-root
       if: steps.cache.outputs.cache-hit != 'true'
 
+    # TODO: main 브랜치랑 diff 있을 경우에만 workflow 실행하도록 수
     - name: Make markdown file
       env:
         PYTHONPATH: 'apps'
@@ -56,7 +57,7 @@ jobs:
       with:
         name: openapi-doc
         path: doc.md
-
+    # TODO: payload 전송 (리퍼지토리 이름, md 파일 이름, 커밋메세지 등)
     - name: Dispatch event to document repository
       uses: peter-evans/repository-dispatch@v1
       with:
