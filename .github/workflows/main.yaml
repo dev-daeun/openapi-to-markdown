@@ -16,3 +16,8 @@ jobs:
 
     - name: Install widdershins
       run: npm install -g widdershins
+
+    - name: Make markdown file
+      env:
+        PYTHONPATH: 'apps'
+      run: echo $(python -c "import json; from main import app; print(json.dumps(app.openapi()))") > doc.json
